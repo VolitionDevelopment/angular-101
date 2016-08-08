@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script>
+        var app = angular.module('app', []);
+
+        app.controller('myCtrl', function($scope){
+            $scope.lastName = "Obama";
+
+            $scope.$watch('firstName', function(){
+                if($scope.firstName === 'Barack'){
+                    console.log("Hello, Mr. President");
+                }
+            });
+
+            $scope.students = ['Summer', 'JT', 'Jackson', 'Shirlette'];
+        });
+    </script>
+</head>
+<body ng-controller="myCtrl">
+
+First name: <input type="text" ng-model="firstName">
+Last Name: <input type="text" ng-model="lastName">
+<br>
+Hello, {{ firstName }} {{ lastName }}!
+
+<hr>
+
+<ul ng-repeat="student in students">
+    <li>Hello, {{student}}</li>
+</ul>
+
+</body>
+</html>
