@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="repeatApp">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Angular Repeat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="js/repeat.js"></script>
 </head>
-<body>
-$END$
+<body ng-controller="repeatCtrl">
+
+<ul ng-repeat="student in students">
+
+    <li><a href="" ng-click="removeStudent($index)">{{student}}</a></li>
+</ul>
+
+<input type="text" ng-model="newStudent">
+<button type="button" ng-click="addStudent()">Add Student</button>
+
+
 </body>
 </html>

@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="todoApp">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Todo App</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="js/todo.js"></script>
 </head>
-<body>
-$END$
+<body ng-controller="todoCtrl">
+
+<div class="container" style="margin-top: 150px;">
+    <div class="jumbotron">
+        <h1>Todo Application</h1>
+        <hr>
+        <div class="panel panel-primary" style="width: 750px; margin: auto">
+            <div class="panel-heading">
+                <h2 class="panel-title">Todo</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Todo Title</th>
+                        <th>Todo Description</th>
+                        <th>Check</th>
+                        <th>Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="todo in todoList">
+                        <td ng-style="textDecor($index)">{{todo.title}}</td>
+                        <td ng-style="textDecor($index)">{{todo.desc}}</td>
+                        <td><input type="checkbox" ng-click="complete($index)"> Complete</td>
+                        <td><button class="btn btn-danger" ng-click="remove($index)">Remove</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="panel panel-success" style="width: 750px; margin: auto">
+            <div class="panel-heading">
+                <h2 class="panel-title">New Entry</h2>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" ng-model="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <input type="text" class="form-control" ng-model="desc" id="desc">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-success btn-lg btn-block" ng-click="addItem()" value="Add item">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
