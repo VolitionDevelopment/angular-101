@@ -1,0 +1,77 @@
+<html ng-app="cashApp">
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="js/register.js"></script>
+</head>
+<body ng-controller="cashAppCtrl">
+
+	<div class="container-fluid">
+		<div class="panel panel-fluid">
+			<h1>Cash Register</h1>
+			<hr>
+			<div ng-show="total">
+				Total: {{total | currency}}
+			</div>
+			<div ng-show="paid">
+				Amount Paid: {{paid | currency}}
+			</div>
+			<div ng-show="totalDue">
+				Change Due: {{totalDue}}
+			</div>
+		</div>
+		<div class="panel panel-body">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" ng-model="total">
+						</div>
+						<span class="help-block help-block-label">
+							Total Amount
+						</span>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="input-group">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" ng-model="paid">
+						</div>
+						<span class="help-block help-block-label">
+							Paid Amount
+						</span>
+					</div>
+					<div class="col-md-2">
+						<button class="btn btn-lg btn-primary" ng-click="makeChange()">Make Change</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="well">
+				<table class="table table-striped">
+					<span ng-show="totalDue">Amount of Coins: {{changeArray.length}}</span>
+					<tbody>
+						<div ng-repeat="item in coinAmount track by $index">
+							{{item}}
+						</div>
+						<tr>
+							<td>Coin Type</td>
+							<td>Coin Image</td>
+							<td>Coin Value</td>
+						</tr>
+						<tr ng-repeat="change in changeArray track by $index">
+							<td>{{change.name}}</td>
+							<td><img ng-src="{{change.image}}"></td>
+							<td>{{change.value | currency}}</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>	

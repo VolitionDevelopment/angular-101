@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="changeApp">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Change</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="js/change.js"></script>
 </head>
-<body>
-$END$
+<body ng-controller="changeCtrl">
+<h1>Change Calculator</h1>
+
+<img src="http://i1183.photobucket.com/albums/x464/elj4s/Screenshot2012-09-20at42821PM_zpsdb433335.png">
+
+<br>
+
+Bill
+<input type="text" ng-model="bill">
+
+Given
+<input type="text" ng-model="given">
+
+<br>
+
+<p>{{quarters}} Quarters</p>
+<p>{{dimes}} Dimes</p>
+<p>{{nickels}} Nickels</p>
+<p>{{pennies}} Pennies</p>
+
+
 </body>
 </html>

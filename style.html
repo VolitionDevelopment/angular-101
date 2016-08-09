@@ -1,0 +1,40 @@
+<html ng-app="styleApp">
+<head>
+	<title>Style App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="js/style.js"></script>
+<style>
+	.trueStoryClass{
+		font-weight: bold;
+	}
+
+</style>
+</head>
+<body ng-controller="styleCtrl">
+
+	<div class="wrapper" ng-style="{color: myColor}">
+		<div class="header">
+			<h1>Consider the following...</h1>
+		</div>
+
+		<div class="item" ng-repeat="student in students track by $index">
+			Name: {{student.name}} 
+			<input type="checkbox" ng-model="student.checked">
+			<span ng-show="student.checked" ng-class="{'trueStoryClass': checked}">{{student.former}}</span>
+			
+		</div>
+
+		<input type="text" ng-model="myColor">
+		<label>Click Me: <input type="checkbox" ng-model="checked" ng-init="checked=true"></label>
+		<hr>
+		<span ng-if="checked">This is removed when the checkbox is unchecked</span>
+		<hr>
+		<span ng-show="checked">Show when checked</span>
+		<hr>
+		<div ng-hide="myColor == 'red'">
+			I am afraid of the color red!
+		</div>
+	</div>
+
+</body>
+</html>
